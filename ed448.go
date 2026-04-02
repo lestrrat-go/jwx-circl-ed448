@@ -23,6 +23,7 @@ import (
 	"github.com/lestrrat-go/jwx/v3/jwk"
 	"github.com/lestrrat-go/jwx/v3/jwk/jwkunsafe"
 	"github.com/lestrrat-go/jwx/v3/jws"
+	"github.com/lestrrat-go/jwx/v3/jws/jwsbb"
 
 	// Import dsig-circl-ed448 for side effects: registers Ed448 sign/verify
 	// with dsig as a Custom family algorithm.
@@ -69,7 +70,7 @@ func (ed448Signer) Sign(key any, payload []byte) ([]byte, error) {
 	if err := ed448PrivateKey(&privkey, key); err != nil {
 		return nil, fmt.Errorf(`ed448.Sign: %w`, err)
 	}
-	return ed448.Sign(privkey, payload, ""), nil
+	return jwsbb.Sign(privkey, "Ed448", payload, nil)
 }
 
 type ed448Verifier struct{}
@@ -79,10 +80,7 @@ func (ed448Verifier) Verify(key any, payload, signature []byte) error {
 	if err := ed448PublicKey(&pubkey, key); err != nil {
 		return fmt.Errorf(`ed448.Verify: %w`, err)
 	}
-	if !ed448.Verify(pubkey, payload, signature, "") {
-		return fmt.Errorf(`ed448.Verify: invalid Ed448 signature`)
-	}
-	return nil
+	return jwsbb.Verify(pubkey, "Ed448", payload, signature)
 }
 
 // --- Key conversion ---
