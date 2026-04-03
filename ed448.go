@@ -37,6 +37,9 @@ func init() {
 	// Register Ed448 as valid algorithm for OKP key type
 	jws.RegisterAlgorithmForKeyType(jwa.OKP(), jwa.EdDSAEd448())
 
+	// Register Ed448 algorithm for Ed448 curve (enables curve-specific algorithm filtering)
+	jws.RegisterAlgorithmForCurve(jwa.Ed448(), jwa.EdDSAEd448())
+
 	// Register signer/verifier that handle JWK key unwrapping.
 	// The dsig-circl-ed448 signer only accepts raw ed448 keys,
 	// so we need this layer to convert JWK keys before dispatch.
