@@ -3,7 +3,7 @@ module github.com/lestrrat-go/jwx-circl-ed448
 go 1.25.0
 
 require (
-	github.com/cloudflare/circl v1.6.4
+	github.com/cloudflare/circl v1.6.5
 	github.com/lestrrat-go/dsig-circl-ed448 v1.0.0
 	github.com/lestrrat-go/jwx/v3 v3.2.0
 )
