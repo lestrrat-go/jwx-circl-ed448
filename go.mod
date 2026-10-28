@@ -5,12 +5,12 @@ go 1.25.0
 require (
 	github.com/cloudflare/circl v1.6.5
 	github.com/lestrrat-go/dsig-circl-ed448 v1.0.0
-	github.com/lestrrat-go/jwx/v3 v3.3.0
+	github.com/lestrrat-go/jwx/v3 v3.4.0
 )
 
 require (
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.4.1 // indirect
-	github.com/goccy/go-json v0.10.6 // indirect
+	github.com/goccy/go-json v0.11.2 // indirect
 	github.com/lestrrat-go/blackmagic v1.0.4 // indirect
 	github.com/lestrrat-go/dsig v1.4.0 // indirect
 	github.com/lestrrat-go/dsig-secp256k1 v1.0.0 // indirect
